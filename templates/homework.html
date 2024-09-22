@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Homework - GitHub Page{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Add New Homework</h2>
+                <form method="POST" action="">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-plus me-2"></i>Add Homework
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h2 class="mb-4">Your Homework</h2>
+        {% for homework in homeworks %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ homework.title }}</h5>
+                    <p class="card-text">{{ homework.content }}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                You haven't added any homework yet.
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
